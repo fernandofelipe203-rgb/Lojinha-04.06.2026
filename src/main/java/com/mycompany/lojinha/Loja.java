@@ -8,16 +8,47 @@ package com.mycompany.lojinha;
  *
  * @author Administrador
  */
+import java.util.ArrayList;
+
 public class Loja {
+    private ArrayList<Produto> produtos = new ArrayList<>();
+    
     String nome;
+    
     
     public void exibirProduto(Produto produto){
         produto.exibirProduto();
         
     }
+    public void exibirLoja(){
+        System.out.println("===MERCADO NORONHA===");
+    }
+    public void adicionarProduto(Produto produto){
+        produtos.add(produto);
+    }
+    public void listarProdutos(){
+        for(Produto p : produtos){
+            p.exibirProduto();
+        }
+    }
+    public Produto buscarProduto(String nome){
 
+    for(Produto p : produtos){
+        if(p.getNome().equalsIgnoreCase(nome)){
+            return p;
+            }
+        }
+    return null;
+    }
     public void realizarVenda(Cliente cliente, Produto produto, int quantidade){
-        produto.vender(quantidade);
+        
+        if(produto.vender(quantidade)){
+        produto.exibirProduto();
+        cliente.exibirCliente();
+        System.out.println("Venda realizada com sucesso");
+        }else{
+        System.out.println("Venda Indisponivel");
+        }
     }
 
     

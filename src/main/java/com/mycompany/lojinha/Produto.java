@@ -15,15 +15,13 @@ public class Produto {
     protected int quantidade;
  
     
-    public void vender(int quantidade){
-        if(quantidade>estoque){
-            System.out.println("Produto indiponivel");
-        }else{
-            System.out.println("Venda realizada com sucesso");
-            this.estoque-=quantidade;
-        }
-        
+public boolean vender(int quantidade) {
+    if (estoque >= quantidade) {
+        estoque -= quantidade;
+        return true;
     }
+    return false;
+}
     public void reporEstoque(int quantidade){
            if(quantidade<=0){
            System.out.println("Quantidade invalida");
