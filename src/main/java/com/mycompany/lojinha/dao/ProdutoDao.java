@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.lojinha;
+package com.mycompany.lojinha.dao;
 
 /**
  *
  * @author Fernando
  */
+import com.mycompany.lojinha.database.Conexao;
+import com.mycompany.lojinha.model.Produto;
 import java.sql.*;
 /* Resumindo a classe
 
@@ -34,7 +36,7 @@ public class ProdutoDao {
         try{
             Connection conn = Conexao.conectar(); //Aqui estou abrindo conexao com o banco
             
-            String sql = "INSERT INTO produtos(nome,preco,estoque)VALUES(?,?,?)";//
+            String sql = "INSERT INTO produtos(nome,preco,quantidade)VALUES(?,?,?)";//
             
             PreparedStatement stmt = conn.prepareStatement(sql);/* criei um objeto stmt
             que vai receber como paramentro a variavel sql que nada mais é do que
@@ -72,7 +74,7 @@ public class ProdutoDao {
             System.out.println("ID: " + rs.getInt("id"));
             System.out.println("Nome: " + rs.getString("nome"));
             System.out.println("Preço: " + rs.getDouble("preco"));
-            System.out.println("Estoque: " + rs.getInt("estoque"));
+            System.out.println("Estoque: " + rs.getInt("quantidade"));
             System.out.println("-------------------");
         }
 
@@ -123,7 +125,7 @@ public class ProdutoDao {
 
         Connection conn = Conexao.conectar();
 
-        String sql = "UPDATE produtos SET nome = ?, preco = ?, estoque = ? WHERE id = ?";
+        String sql = "UPDATE produtos SET nome = ?, preco = ?, quantidade = ? WHERE id = ?";
 
         PreparedStatement stmt = conn.prepareStatement(sql);/*aqui estou preparando
         as informaçoes para uma execuçao.
@@ -144,5 +146,82 @@ public class ProdutoDao {
     } catch (Exception e) {
         e.printStackTrace();
     }
+}
+    public Produto buscarProduto(String nome){
+         try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "SELECT * FROM produtos WHERE nome = ?";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setString(1, nome);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            Produto produto = new Produto(
+                    rs.getString("nome"),
+                    rs.getDouble("preco"),
+                    rs.getInt("quantidade")
+            );
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return produto;
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return null;
+    }
+
+    public boolean realizarVenda(String nome, int quantidade) {
+
+    try {
+
+        Produto produto = buscarProduto(nome);
+
+        if (produto == null) {
+            return false;
+        }
+
+        if (produto.getEstoque() < quantidade) {
+            return false;
+        }
+
+        int novoEstoque = produto.getEstoque() - quantidade;
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "UPDATE produtos SET quantidade = ? WHERE nome = ?";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        stmt.setInt(1, novoEstoque);
+        stmt.setString(2, nome);
+
+        stmt.executeUpdate();
+
+        stmt.close();
+        conn.close();
+
+        return true;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return false;
 }
 }

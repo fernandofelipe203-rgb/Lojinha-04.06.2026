@@ -8,6 +8,8 @@ package com.mycompany.lojinha;
  *
  * @author Fernando
  */
+import com.mycompany.lojinha.model.Loja;
+import com.mycompany.lojinha.menu.Menu;
 import java.util.Scanner;
 
 public class Main {

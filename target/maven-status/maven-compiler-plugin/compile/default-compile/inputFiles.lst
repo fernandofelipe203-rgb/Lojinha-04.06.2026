@@ -1,7 +1,8 @@
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Cliente.java
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Conexao.java
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Loja.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\dao\ProdutoDao.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\database\Conexao.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\database\Testeconexao.java
 C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Main.java
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Menu.java
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Produto.java
-C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\Testeconexao.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\menu\Menu.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\model\Cliente.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\model\Loja.java
+C:\Users\Administrador\Desktop\loja\lojinha\src\main\java\com\mycompany\lojinha\model\Produto.java

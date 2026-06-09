@@ -1,7 +1,8 @@
-com\mycompany\lojinha\Loja.class
-com\mycompany\lojinha\Conexao.class
-com\mycompany\lojinha\Menu.class
+com\mycompany\lojinha\database\Conexao.class
+com\mycompany\lojinha\database\Testeconexao.class
+com\mycompany\lojinha\model\Cliente.class
+com\mycompany\lojinha\dao\ProdutoDao.class
 com\mycompany\lojinha\Main.class
-com\mycompany\lojinha\Testeconexao.class
-com\mycompany\lojinha\Cliente.class
-com\mycompany\lojinha\Produto.class
+com\mycompany\lojinha\model\Loja.class
+com\mycompany\lojinha\model\Produto.class
+com\mycompany\lojinha\menu\Menu.class

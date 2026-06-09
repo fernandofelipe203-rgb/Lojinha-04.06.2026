@@ -2,21 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.lojinha;
+package com.mycompany.lojinha.menu;
 
 /**
  *
  * @author Administrador
  */
+import com.mycompany.lojinha.model.Loja;
+import com.mycompany.lojinha.model.Produto;
 import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import com.mycompany.lojinha.dao.ProdutoDao;
 
 public class Menu {
-    
-    Scanner sc =new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+    ProdutoDao dao = new ProdutoDao();
     Loja loja = new Loja("Mercado do noronha");
-    
+
     public void exibirMenu(){
         while (true){
         System.out.println(" ====MENU===== ");
@@ -43,8 +44,8 @@ public class Menu {
                 sc.nextLine();
                 Produto produto = new Produto(nomeProduto,preco,quantidade);
                 
-                System.out.println("---Produto cadastrado com sucesso!---  ");
-                loja.adicionarProduto(produto);
+                dao.cadastrarProduto(produto);
+
                 
                 break;
                 
@@ -54,26 +55,25 @@ public class Menu {
             
             case 2 :
                 System.out.println("====BUSQUE O PRODUTO =====");
-                loja.listarProdutos();
+                dao.listarProdutos();
                 System.out.print("Digite o nome do produto que deseja vender ");
                 String nome = sc.nextLine();
                 System.out.print("Quantidade: ");
                 int quant = sc.nextInt();
                 sc.nextLine();
                 
-                Produto produtoVenda = loja.buscarProduto(nome);
                 
-                if (produtoVenda != null){
-                    loja.realizarVenda(produtoVenda,quant);
+                if (dao.realizarVenda(nome, quant)){
+                    System.out.println("Venda realizada com sucesso");
                 }else{
-                    System.out.println("Produto nao encontrado ou nao cadastrado");
+                    System.out.println("Produto nao encontrado ou estoque insuficiente");
                 }
                 
                 break;
             
             case 3 :
                 System.out.println("=====PRODUTOS =====");
-                loja.listarProdutos();
+                dao.listarProdutos();
                 break;
             
             case 4 :
