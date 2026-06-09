@@ -306,6 +306,7 @@ Produto produto = new Produto(nome, preco, quantidade);
 ProdutoDao dao = new ProdutoDao();
 
 dao.cadastrarProduto(produto);
+
 carregarTabela();// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

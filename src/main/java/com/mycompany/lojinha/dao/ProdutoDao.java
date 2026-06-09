@@ -55,7 +55,10 @@ public class ProdutoDao {
             System.out.println("Produto cadastrado com sucesso");
             
         }catch(Exception e){
-            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(
+        null,
+        e.getMessage()
+    );
         }
     
     }
@@ -135,7 +138,11 @@ public class ProdutoDao {
         System.out.println("Produto excluído com sucesso!");
 
     } catch (Exception e) {
-        e.printStackTrace();
+        javax.swing.JOptionPane.showMessageDialog(
+        null,
+        e.getMessage()
+    );
+    
     }
 }
     public void atualizarProduto(int id, Produto produto) {
