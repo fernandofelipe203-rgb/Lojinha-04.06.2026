@@ -40,11 +40,10 @@ public class Loja {
         }
     return null;
     }
-    public void realizarVenda(Cliente cliente, Produto produto, int quantidade){
+    public void realizarVenda(Produto produto, int quantidade){
         
         if(produto.vender(quantidade)){
         produto.exibirProduto();
-        cliente.exibirCliente();
         System.out.println("Venda realizada com sucesso");
         }else{
         System.out.println("Venda Indisponivel");

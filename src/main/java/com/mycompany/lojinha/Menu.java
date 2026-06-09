@@ -30,6 +30,7 @@ public class Menu {
         sc.nextLine();
         switch (opcao){
             case 1:
+                System.out.println("===CADASTRAR PRODUTO=== ");
                 System.out.println("Digite o nome do produto que deseja cadastrar:  ");
                 String nomeProduto = sc.nextLine();
                 
@@ -52,7 +53,7 @@ public class Menu {
                 
             
             case 2 :
-                System.out.println("====Lista de produtos=====");
+                System.out.println("====BUSQUE O PRODUTO =====");
                 loja.listarProdutos();
                 System.out.print("Digite o nome do produto que deseja vender ");
                 String nome = sc.nextLine();
@@ -62,12 +63,16 @@ public class Menu {
                 
                 Produto produtoVenda = loja.buscarProduto(nome);
                 
-                
+                if (produtoVenda != null){
+                    loja.realizarVenda(produtoVenda,quant);
+                }else{
+                    System.out.println("Produto nao encontrado ou nao cadastrado");
+                }
                 
                 break;
             
             case 3 :
-                System.out.println("=====Todos produtos da loja=====");
+                System.out.println("=====PRODUTOS =====");
                 loja.listarProdutos();
                 break;
             
