@@ -87,6 +87,24 @@ public class ProdutoDao {
     }
         
     }
+    public ResultSet listarProdutosTabela() {
+
+    try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "SELECT * FROM produtos";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        return stmt.executeQuery();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return null;
+}
     public void excluirProduto(int id) {
     /*
     O método excluirProduto recebe um id como parâmetro.
@@ -224,4 +242,6 @@ public class ProdutoDao {
 
     return false;
 }
+
+  
 }

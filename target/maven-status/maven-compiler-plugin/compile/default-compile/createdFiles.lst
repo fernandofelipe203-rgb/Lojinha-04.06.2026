@@ -1,5 +1,6 @@
 com\mycompany\lojinha\database\Conexao.class
 com\mycompany\lojinha\database\Testeconexao.class
+TelaPrincipal.class
 com\mycompany\lojinha\model\Cliente.class
 com\mycompany\lojinha\dao\ProdutoDao.class
 com\mycompany\lojinha\Main.class
