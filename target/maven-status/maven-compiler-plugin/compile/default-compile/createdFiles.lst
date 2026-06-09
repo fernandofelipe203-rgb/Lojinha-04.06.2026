@@ -1,3 +1,4 @@
+TelaDashboard.class
 com\mycompany\lojinha\database\Conexao.class
 com\mycompany\lojinha\database\Testeconexao.class
 TelaPrincipal.class

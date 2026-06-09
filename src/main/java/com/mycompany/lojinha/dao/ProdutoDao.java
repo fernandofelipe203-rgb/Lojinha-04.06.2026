@@ -32,6 +32,7 @@ comando SQL e os salva no banco de dados.
 */
 
 public class ProdutoDao {
+    
     public void cadastrarProduto(Produto produto){
         try{
             Connection conn = Conexao.conectar(); //Aqui estou abrindo conexao com o banco
@@ -241,7 +242,98 @@ public class ProdutoDao {
     }
 
     return false;
+    
 }
+public int contarProdutos() {
 
+    try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "SELECT COUNT(*) FROM produtos";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            int total = rs.getInt(1);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return total;
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return 0;
+}
+public int quantidadeTotalEstoque() {
+
+    try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "SELECT SUM(quantidade) FROM produtos";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            int total = rs.getInt(1);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return total;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return 0;
+}
+public double valorTotalEstoque() {
+
+    try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql = "SELECT SUM(preco * quantidade) FROM produtos";
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            double total = rs.getDouble(1);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+            return total;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return 0;
+}
   
 }
