@@ -9,7 +9,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author Administrador
+ * @author Fernando
  */
 public class Testeconexao {
      public static void main(String[] args) {
